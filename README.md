@@ -25,7 +25,7 @@ Project/
 ```bash
 sudo apt install gcc-aarch64-linux-gnu
 ```
-### Raspberry Pi4 연결 설정
+✅### Raspberry Pi4 연결 설정
 `build.sh` 상단의 아래 값을 환경에 맞게 수정:
 ```bash
 RPI_USER=aposeseco       # Raspberry Pi4 계정명
@@ -33,7 +33,7 @@ RPI_IP=100.65.223.14     # Raspberry Pi4 IP 주소
 RPI_DEST=/home/aposeseco/Project  # 전송 경로
 ```
 
-### 빌드 및 전송
+✅### 빌드 및 전송
 ```bash
 ./build.sh          # 전체 빌드 + Raspberry Pi4 자동 전송
 ./build.sh clean    # 빌드 결과물 정리
@@ -46,16 +46,21 @@ RPI_DEST=/home/aposeseco/Project  # 전송 경로
 
 
 ## 실행 방법
-### 서버 (Raspberry Pi4)
+✅### 서버 (Raspberry Pi4)
 ```bash
 cd ~/Project
 ./server_exe
 ```
+✅### 클라이언트 (Ubuntu)
+```bash
+./client_exe <Raspberry Pi4 IP> 60000
+```
+
 ### 사용 핀
 ```GPIO 핀
 
- +-----+-----+---------+------+---+---Pi 4B--+---+------+---------+-----+-----+
- | BCM | wPi |   Name  | Mode | V | Physical | V | Mode | Name    | wPi | BCM |
+ +-----+-----+---------+--- | ---+---+---Pi 4B--+---+------+---------+-----+-----+
+ | BCM | wPi |   Name  | ModeV | Physical | V | Mode | Name    | wPi | BCM |
  +-----+-----+---------+------+---+----++----+---+------+---------+-----+-----+
  |     |     |    3.3v |      |   |  1 || 2  |   |      | 5v      |     |     |
  |   2 |   8 |   SDA.1 | ALT0 | 1 |  3 || 4  |   |      | 5v      |     |     |
@@ -114,10 +119,7 @@ cd ~/Project
 | `SEG_G 22` | 22 | 6 | 31번 | G |
 ```
 
-### 클라이언트 (Ubuntu)
-```bash
-./client_exe <Raspberry Pi4 IP> 60000
-```
+
 
 ## 서버 구조 (server/main.c)
 ### 주요 기능
@@ -164,7 +166,7 @@ cd ~/Project
 - 완료 후 서버에서 부저 자동 실행
 
 ## 사용 방법
-### 메뉴 구성
+✅### 메뉴 구성
 ```
 | 번호 | 기능 | 설명 |
 | 1 | LED ON | LED 켜기 |
@@ -177,6 +179,22 @@ cd ~/Project
 | 0 | 프로그램 종료 | 클라이언트 정상 종료 및 클라이언트 재접속 가능|
 | 99 | 서버 강제 종료 | 서버 프로세스 원격 강제 종료 |
 ```
+✅## 추가 기능
+
+### CDS 센서 Threshold 기반 LED 자동 제어
+클라이언트에서 Threshold 값(0~255)을 입력하면 서버가 조도센서로 현재 조도값을 측정한다.
+측정값과 Threshold를 비교하여 자동으로 LED를 제어한다.
+
+| 조건 | 동작 |
+|------|------|
+| 측정값 < Threshold (밝은 환경) | LED OFF |
+| 측정값 ≥ Threshold (어두운 환경) | LED ON |
+
+### 클라이언트에서 서버 원격 강제 종료
+클라이언트 메뉴에서 `99` 입력 시 서버로 `SHUTDOWN` 명령을 전송한다.
+서버는 buzzer `dlclose` 후 `SIGTERM`으로 안전하게 종료되며, 클라이언트도 자동 종료된다.
+
+
 ### 시그널 처리
 ```
 | 시그널 | 동작 |
