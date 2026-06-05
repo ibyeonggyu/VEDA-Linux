@@ -218,7 +218,7 @@ void *device_client(void *arg)
     else if(strcmp(device, "SHUTDOWN") == 0) {
         send(csock, "[SERVER]: SHUTDOWN\n", strlen("[SERVER]: SHUTDOWN\n"), 0);
         close(csock);
-        kill(main_pid, SIGTERM);
+        kill(main_pid, SIGKILL);
         return NULL;
     }
 
@@ -239,7 +239,6 @@ int main()
     sigdelset(&mask, SIGKILL);    
     sigprocmask(SIG_SETMASK, &mask, NULL);
     signal(SIGINT, signal_handler);
-    signal(SIGTERM, signal_handler);
 
     int ssock, csock;
     struct sockaddr_in server_addr, client_addr;
