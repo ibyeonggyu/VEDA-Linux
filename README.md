@@ -49,7 +49,7 @@ RPI_DEST=/home/aposeseco/Project  # 전송 경로
 ### ✅ 서버 (Raspberry Pi4)
 ```bash
 cd ~/Project
-./server_exe
+sudo ./server_exe
 ```
 ### ✅ 클라이언트 (Ubuntu)
 ```bash
