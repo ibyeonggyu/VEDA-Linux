@@ -111,7 +111,6 @@ cd ~/Project
 | 5 | BUZZER OFF | 멜로디 재생 중지 |
 | 6 | CDS SENSOR CHECK | Threshold 입력 후 조도 측정 및 LED 자동 제어 |
 | 7 | 7SEGMENT COUNTDOWN | 숫자(0~9) 입력 후 카운트다운, 완료 시 부저 자동 실행 |
-
 | 0 | 프로그램 종료 | 클라이언트 정상 종료 및 클라이언트 재접속 가능|
 | 99 | 서버 강제 종료 | 서버 프로세스 원격 강제 종료 |
 
