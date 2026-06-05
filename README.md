@@ -25,7 +25,7 @@ Project/
 ```bash
 sudo apt install gcc-aarch64-linux-gnu
 ```
-✅### Raspberry Pi4 연결 설정
+### ✅ Raspberry Pi4 연결 설정
 `build.sh` 상단의 아래 값을 환경에 맞게 수정:
 ```bash
 RPI_USER=aposeseco       # Raspberry Pi4 계정명
@@ -33,7 +33,7 @@ RPI_IP=100.65.223.14     # Raspberry Pi4 IP 주소
 RPI_DEST=/home/aposeseco/Project  # 전송 경로
 ```
 
-✅ ### 빌드 및 전송
+### ✅ 빌드 및 전송
 ```bash
 ./build.sh          # 전체 빌드 + Raspberry Pi4 자동 전송
 ./build.sh clean    # 빌드 결과물 정리
@@ -46,12 +46,12 @@ RPI_DEST=/home/aposeseco/Project  # 전송 경로
 
 
 ## 실행 방법
-✅ ### 서버 (Raspberry Pi4)
+### ✅ 서버 (Raspberry Pi4)
 ```bash
 cd ~/Project
 ./server_exe
 ```
-✅ ### 클라이언트 (Ubuntu)
+### ✅ 클라이언트 (Ubuntu)
 ```bash
 ./client_exe <Raspberry Pi4 IP> 60000
 ```
@@ -166,7 +166,7 @@ cd ~/Project
 - 완료 후 서버에서 부저 자동 실행
 
 ## 사용 방법
-✅### 메뉴 구성
+### ✅ 메뉴 구성
 ```
 | 번호 | 기능 | 설명 |
 | 1 | LED ON | LED 켜기 |
@@ -179,7 +179,7 @@ cd ~/Project
 | 0 | 프로그램 종료 | 클라이언트 정상 종료 및 클라이언트 재접속 가능|
 | 99 | 서버 강제 종료 | 서버 프로세스 원격 강제 종료 |
 ```
-✅## 추가 기능
+## ✅ 추가 기능
 
 ### CDS 센서 Threshold 기반 LED 자동 제어
 클라이언트에서 Threshold 값(0~255)을 입력하면 서버가 조도센서로 현재 조도값을 측정한다.
