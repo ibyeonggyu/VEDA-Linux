@@ -2,12 +2,12 @@
 
 set -e
 
-/* ************************ */
-/* 사용자 변경 시 데이터 변경 */
+# ************************ */
+# 사용자 변경 시 데이터 변경 */
 RPI_USER=aposeseco
 RPI_IP=100.65.223.14
 RPI_DEST=/home/aposeseco/Project
-/* ************************ */
+# ************************ */
 
 if [ "$1" == "clean" ]; then
     echo "🧹 Cleaning build directory..."
