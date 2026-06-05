@@ -33,8 +33,9 @@ RPI_IP=100.65.223.14     # Raspberry Pi4 IP 주소
 RPI_DEST=/home/aposeseco/Project  # 전송 경로
 ```
 
-### ✅ 빌드 및 전송
+### ✅ 권한 주기, 빌드 및 전송
 ```bash
+chmod +x build.sh
 ./build.sh          # 전체 빌드 + Raspberry Pi4 자동 전송
 ./build.sh clean    # 빌드 결과물 정리
 ```
@@ -54,6 +55,7 @@ sudo ./server_exe
 ### ✅ 클라이언트 (Ubuntu)
 ```bash
 ./client_exe <Raspberry Pi4 IP> 60000
+에시 : ./client_exe 100.65.223.14 60000
 ```
 
 ### 사용 핀
